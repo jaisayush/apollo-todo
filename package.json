@@ -1,0 +1,12 @@
+{
+  "name": "@apollo-todo/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "nx": "16.2.1",
+    "@nx/workspace": "16.2.1"
+  }
+}
