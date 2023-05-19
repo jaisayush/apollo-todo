@@ -10,9 +10,8 @@ dotenv.config();
 
 // Connect to MongoDB
 
-// .connect(process.env.MONGODB_URI, {})
 mongoose
-  .connect('mongodb+srv://learn_mongo:learn_mongo@todoapp.rrb6pyx.mongodb.net/?retryWrites=true&w=majority', {})
+  .connect(process.env.DB_CONNECT, {})
   .then(() => {
     console.log('Connected to the DB');
   })

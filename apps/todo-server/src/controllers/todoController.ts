@@ -6,11 +6,11 @@ const getTodos = async (req, res) => {
     const todos = await Todos.find().sort({ createdAt: -1 });
     setTimeout(() => {
       res.json(todos);
-    }, 3000);
+    }, 1000);
   } catch (error) {
     setTimeout(() => {
       res.status(500).json({ error: 'Server error' });
-    }, 3000);
+    }, 1000);
   }
 };
 
@@ -24,11 +24,11 @@ const createTodo = async (req, res) => {
     await todo.save();
     setTimeout(() => {
       res.status(201).send({ ...todo, isSuccess: true });
-    }, 3000);
+    }, 1000);
   } catch (error) {
     setTimeout(() => {
       res.status(400).json({ error: error, isSuccess: false });
-    }, 3000);
+    }, 1000);
   }
 };
 
@@ -40,15 +40,15 @@ const deleteTodo = async (req, res) => {
     if (!deletedTodo) {
       setTimeout(() => {
         return res.status(404).json({ error: 'Todo not found' });
-      }, 3000);
+      }, 1000);
     }
     setTimeout(() => {
       res.json({ message: 'Todo deleted successfully', isSuccess: true });
-    }, 3000);
+    }, 1000);
   } catch (error) {
     setTimeout(() => {
       res.status(500).json({ error: error, isSuccess: false });
-    }, 3000);
+    }, 1000);
   }
 };
 
