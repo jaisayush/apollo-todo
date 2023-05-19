@@ -4,24 +4,31 @@ const getTodos = async (req, res) => {
   try {
     // Retrieve all todos and sort by createdAt field in descending order
     const todos = await Todos.find().sort({ createdAt: -1 });
-    res.json(todos);
+    setTimeout(() => {
+      res.json(todos);
+    }, 3000);
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    setTimeout(() => {
+      res.status(500).json({ error: 'Server error' });
+    }, 3000);
   }
 };
 
 const createTodo = async (req, res) => {
   try {
-    const { task, priority } = req.body;
-    // Create a new todo with the provided task and priority
+    const { task } = req.body;
+    // Create a new todo with the provided task
     const todo = new Todos({
       task,
-      priority
     });
     await todo.save();
-    res.status(201).json(todo);
+    setTimeout(() => {
+      res.status(201).send({ ...todo, isSuccess: true });
+    }, 3000);
   } catch (error) {
-    res.status(400).json({ error: 'Invalid data' });
+    setTimeout(() => {
+      res.status(400).json({ error: error, isSuccess: false });
+    }, 3000);
   }
 };
 
@@ -31,11 +38,17 @@ const deleteTodo = async (req, res) => {
     // Find and delete a todo by its ID
     const deletedTodo = await Todos.findByIdAndDelete(id);
     if (!deletedTodo) {
-      return res.status(404).json({ error: 'Todo not found' });
+      setTimeout(() => {
+        return res.status(404).json({ error: 'Todo not found' });
+      }, 3000);
     }
-    res.json({ message: 'Todo deleted successfully' });
+    setTimeout(() => {
+      res.json({ message: 'Todo deleted successfully', isSuccess: true });
+    }, 3000);
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    setTimeout(() => {
+      res.status(500).json({ error: error, isSuccess: false });
+    }, 3000);
   }
 };
 

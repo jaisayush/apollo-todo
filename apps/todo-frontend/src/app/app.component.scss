@@ -1,0 +1,33 @@
+.container {
+  max-width: 60%;
+  max-height: 90%;
+  .input-container {
+    display: flex;
+  }
+  input[type='text'],
+  input[type='text']:focus {
+    color: #fff;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  button {
+    margin-left: 1rem;
+  }
+  li.list-group-item {
+    background-color: #423a6f;
+    color: #f8f9fa;
+  }
+
+  .delete {
+    cursor: pointer;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 150px;
+  width: 150px;
+}
